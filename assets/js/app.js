@@ -444,14 +444,21 @@
       else whatsapp = '+' + digits;
     } else {
       var cc = code.replace('+', '');
-      if (raw.charAt(0) === '+' && digits.indexOf(cc) === 0) digits = digits.slice(cc.length);
+      // Drop a repeated country code ("62 812…" under +62), with or without the "+",
+      // but only when enough digits remain for a real national number.
+      if (digits.indexOf(cc) === 0 && digits.length - cc.length >= 6 &&
+          (raw.charAt(0) === '+' || digits.length >= cc.length + 8)) {
+        digits = digits.slice(cc.length);
+      }
       if (cc === '7' && digits.length === 11 && digits.charAt(0) === '8') digits = digits.slice(1);
       digits = digits.replace(/^0+/, '');
-      if (digits.length < 6 || cc.length + digits.length > 15) phoneErr = T.contact.err_phone_invalid;
+      var opt = fCountry.options[fCountry.selectedIndex];
+      var lo = opt && +opt.getAttribute('data-min') || 6;
+      var hi = opt && +opt.getAttribute('data-max') || 14;
+      if (digits.length < lo || digits.length > hi || cc.length + digits.length > 15) phoneErr = T.contact.err_phone_invalid;
       else {
         whatsapp = '+' + cc + digits;
-        var o = fCountry.options[fCountry.selectedIndex];
-        iso = o ? o.getAttribute('data-iso') || 'XX' : 'XX';
+        iso = opt ? opt.getAttribute('data-iso') || 'XX' : 'XX';
       }
     }
     setErr(fPhone, 'e-phone', phoneErr);

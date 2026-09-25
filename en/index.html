@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Bali Property Desk — property selection in Bali</title>
-<meta name="description" content="A service that matches villas, houses, apartments, hospitality properties and land in Bali to your budget, area and goal.">
+<title>Bali Property Desk — property search in Bali</title>
+<meta name="description" content="A service that finds villas, houses, apartments, hospitality properties and land in Bali to your budget, area and goal.">
 <meta name="theme-color" content="#FBFAF7">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bali Property Desk">
 <meta property="og:locale" content="en_AU">
-<meta property="og:title" content="Bali Property Desk — property selection in Bali">
+<meta property="og:title" content="Bali Property Desk — property search in Bali">
 <meta property="og:description" content="Villas, houses, apartments, hospitality properties and land across Bali. Answer 5 questions — we&#x27;ll prepare options that fit.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="/bali-property-desk/assets/img/favicon.svg" type="image/svg+xml">
@@ -19,9 +19,9 @@
 <link rel="preload" href="/bali-property-desk/assets/fonts/inter-tight-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" media="(max-width: 640px)" imagesrcset="/bali-property-desk/assets/img/hero-own-m-800.avif 800w, /bali-property-desk/assets/img/hero-own-m-1200.avif 1200w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" type="image/avif" media="(min-width: 641px)" imagesrcset="/bali-property-desk/assets/img/hero-own-1000.avif 1000w, /bali-property-desk/assets/img/hero-own-1600.avif 1600w, /bali-property-desk/assets/img/hero-own-2400.avif 2400w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="/bali-property-desk/assets/css/bpd.css?v=a53ad047">
-<script src="/bali-property-desk/assets/js/bpd-data.en.js?v=a53ad047" defer></script>
-<script src="/bali-property-desk/assets/js/app.js?v=a53ad047" defer></script>
+<link rel="stylesheet" href="/bali-property-desk/assets/css/bpd.css?v=b9bd7544">
+<script src="/bali-property-desk/assets/js/bpd-data.en.js?v=b9bd7544" defer></script>
+<script src="/bali-property-desk/assets/js/app.js?v=b9bd7544" defer></script>
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
@@ -33,7 +33,7 @@
     <nav class="topnav" aria-label="How it works">
       <a href="#kak">How it works</a>
       <a href="#podbor">Property quiz</a>
-      <a class="btn btn--primary btn--sm" href="#podbor" data-cta="header"><span>Get my shortlist</span></a>
+      <a class="btn btn--primary btn--sm" href="#podbor" data-cta="header"><span>Start my search</span></a>
     </nav>
     <nav class="langs" aria-label="Language">
       <a href="/bali-property-desk/" lang="ru">RU</a>
@@ -72,12 +72,12 @@
   <div class="wrap">
     <header class="sec-head">
       <h2 id="cats-title" class="display sec-title">What we can find for you</h2>
-      <p class="sec-sub">From a private home to land or a running hospitality project — matched to your budget, area and task.</p>
+      <p class="sec-sub">From a private home to land or a running hospitality project — matched to your budget, area and goals.</p>
     </header>
     <ul class="cats__grid" role="list">
       <li class="cat"><figure class="cat__img"><picture><source type="image/avif" srcset="/bali-property-desk/assets/img/dev-cat-villas-480.avif 480w, /bali-property-desk/assets/img/dev-cat-villas-800.avif 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><source type="image/webp" srcset="/bali-property-desk/assets/img/dev-cat-villas-480.webp 480w, /bali-property-desk/assets/img/dev-cat-villas-800.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><img src="/bali-property-desk/assets/img/dev-cat-villas-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></picture></figure><div class="cat__body"><span class="cat__n num">01</span><h3 class="cat__title">Villas &amp; houses</h3><p class="cat__text">For living, holidays and long stays.</p></div></li>
       <li class="cat"><figure class="cat__img"><picture><source type="image/avif" srcset="/bali-property-desk/assets/img/dev-cat-apart-480.avif 480w, /bali-property-desk/assets/img/dev-cat-apart-800.avif 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><source type="image/webp" srcset="/bali-property-desk/assets/img/dev-cat-apart-480.webp 480w, /bali-property-desk/assets/img/dev-cat-apart-800.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><img src="/bali-property-desk/assets/img/dev-cat-apart-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></picture></figure><div class="cat__body"><span class="cat__n num">02</span><h3 class="cat__title">Apartments &amp; townhouses</h3><p class="cat__text">Compact options and modern residential projects.</p></div></li>
-      <li class="cat"><figure class="cat__img"><picture><source type="image/avif" srcset="/bali-property-desk/assets/img/dev-cat-hotel-480.avif 480w, /bali-property-desk/assets/img/dev-cat-hotel-800.avif 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><source type="image/webp" srcset="/bali-property-desk/assets/img/dev-cat-hotel-480.webp 480w, /bali-property-desk/assets/img/dev-cat-hotel-800.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><img src="/bali-property-desk/assets/img/dev-cat-hotel-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></picture></figure><div class="cat__body"><span class="cat__n num">03</span><h3 class="cat__title">Hospitality &amp; running projects</h3><p class="cat__text">Hotels, apart-hotels and other managed properties.</p></div></li>
+      <li class="cat"><figure class="cat__img"><picture><source type="image/avif" srcset="/bali-property-desk/assets/img/dev-cat-hotel-480.avif 480w, /bali-property-desk/assets/img/dev-cat-hotel-800.avif 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><source type="image/webp" srcset="/bali-property-desk/assets/img/dev-cat-hotel-480.webp 480w, /bali-property-desk/assets/img/dev-cat-hotel-800.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><img src="/bali-property-desk/assets/img/dev-cat-hotel-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></picture></figure><div class="cat__body"><span class="cat__n num">03</span><h3 class="cat__title">Hotels &amp; running projects</h3><p class="cat__text">Hotels, aparthotels and other managed properties.</p></div></li>
       <li class="cat"><figure class="cat__img"><picture><source type="image/avif" srcset="/bali-property-desk/assets/img/dev-cat-land-480.avif 480w, /bali-property-desk/assets/img/dev-cat-land-800.avif 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><source type="image/webp" srcset="/bali-property-desk/assets/img/dev-cat-land-480.webp 480w, /bali-property-desk/assets/img/dev-cat-land-800.webp 800w" sizes="(max-width: 640px) 46vw, (max-width: 1024px) 45vw, 360px"><img src="/bali-property-desk/assets/img/dev-cat-land-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></picture></figure><div class="cat__body"><span class="cat__n num">04</span><h3 class="cat__title">Land</h3><p class="cat__text">Plots and projects for construction.</p></div></li>
     </ul>
     <div class="areas">
@@ -85,7 +85,7 @@
       <ul class="areas__chips" role="list">
         <li><a href="#podbor" data-cta="area">Ubud</a></li>
         <li><a href="#podbor" data-cta="area">Bukit / Uluwatu</a></li>
-        <li><a href="#podbor" data-cta="area">West coast</a></li>
+        <li><a href="#podbor" data-cta="area">West Coast</a></li>
         <li><a href="#podbor" data-cta="area">South Bali</a></li>
         <li class="is-more"><a href="#podbor" data-cta="area">Other areas on request</a></li>
       </ul>
@@ -121,10 +121,10 @@
       <div class="qcontact" id="qcontact" hidden>
         <div class="qcontact__head">
           <h3 class="display qcontact__title" id="contact-title" tabindex="-1">Where should we send your shortlist?</h3>
-          <p class="qcontact__body">Leave a contact — we&#x27;ll review your answers and prepare options that fit.</p>
+          <p class="qcontact__body">Leave your details — we&#x27;ll review your answers and prepare options that fit.</p>
         </div>
         <dl class="summary" id="summary"></dl>
-        <p class="summary__hint">Tap an answer to change it</p>
+        <p class="summary__hint">Tap or click an answer to change it.</p>
 
         <form class="form" id="lead-form" novalidate>
           <div class="form__alert" id="form-alert" role="alert" aria-live="assertive"></div>
@@ -147,18 +147,18 @@
             <label for="f-phone"><span id="lbl-phone">WhatsApp number</span> <span class="req" aria-hidden="true">*</span></label>
             <div class="phone">
               <select id="f-country" name="country" aria-label="Country code">
-                  <option value="+62" data-iso="ID">+62 ID</option>
-                  <option value="+61" data-iso="AU">+61 AU</option>
-                  <option value="+64" data-iso="NZ">+64 NZ</option>
-                  <option value="+65" data-iso="SG">+65 SG</option>
-                  <option value="+44" data-iso="GB">+44 UK</option>
-                  <option value="+1" data-iso="US">+1 US/CA</option>
-                  <option value="+971" data-iso="AE">+971 AE</option>
-                  <option value="+852" data-iso="HK">+852 HK</option>
-                  <option value="+86" data-iso="CN">+86 CN</option>
-                  <option value="+7" data-iso="RU">+7 RU/KZ</option>
-                  <option value="+49" data-iso="DE">+49 DE</option>
-                  <option value="+33" data-iso="FR">+33 FR</option>
+                  <option value="+62" data-iso="ID" data-min="9" data-max="12">+62 ID</option>
+                  <option value="+61" data-iso="AU" data-min="9" data-max="9">+61 AU</option>
+                  <option value="+64" data-iso="NZ" data-min="8" data-max="10">+64 NZ</option>
+                  <option value="+65" data-iso="SG" data-min="8" data-max="8">+65 SG</option>
+                  <option value="+44" data-iso="GB" data-min="9" data-max="10">+44 UK</option>
+                  <option value="+1" data-iso="US" data-min="10" data-max="10">+1 US/CA</option>
+                  <option value="+971" data-iso="AE" data-min="8" data-max="9">+971 AE</option>
+                  <option value="+852" data-iso="HK" data-min="8" data-max="8">+852 HK</option>
+                  <option value="+86" data-iso="CN" data-min="11" data-max="11">+86 CN</option>
+                  <option value="+7" data-iso="RU" data-min="10" data-max="10">+7 RU/KZ</option>
+                  <option value="+49" data-iso="DE" data-min="9" data-max="11">+49 DE</option>
+                  <option value="+33" data-iso="FR" data-min="9" data-max="9">+33 FR</option>
                   <option value="other" data-iso="XX">Other</option>
               </select>
               <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-required="true" aria-describedby="e-phone" placeholder="Number">
@@ -224,15 +224,15 @@
 <!-- BLOCK 4 · КАК РАБОТАЕТ + TRUST -->
 <section class="how" id="kak" aria-labelledby="how-title">
   <div class="wrap">
-    <h2 id="how-title" class="display sec-title">How the selection works</h2>
+    <h2 id="how-title" class="display sec-title">How the search works</h2>
     <ol class="how__grid" role="list">
       <li class="how__step"><span class="how__n num" aria-hidden="true">01</span><h3 class="how__title">Tell us what you're looking for</h3></li>
       <li class="how__step"><span class="how__n num" aria-hidden="true">02</span><h3 class="how__title">We compare the options that fit</h3></li>
       <li class="how__step"><span class="how__n num" aria-hidden="true">03</span><h3 class="how__title">Get your shortlist and choose what to look at in detail</h3></li>
     </ol>
     <div class="how__foot">
-      <p class="how__trust">We work with properties from different owners, developers and partners in Bali.</p>
-      <a class="btn btn--primary" href="#podbor" data-cta="how"><span>Get my shortlist</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      <p class="how__trust">We work with properties from a range of owners, developers and partners in Bali.</p>
+      <a class="btn btn--primary" href="#podbor" data-cta="how"><span>Start my search</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
     </div>
   </div>
 </section>
@@ -245,14 +245,14 @@
       <p class="sec-sub">Foreigners can&#x27;t hold freehold title (Hak Milik) in Indonesia, but there are legal options. We&#x27;ll suggest the one that fits your situation.</p>
     </header>
     <ol class="own__grid" role="list">
-      <li class="own__item"><span class="own__n num" aria-hidden="true">01</span><p class="own__tag">Most common</p><h3 class="own__title">Leasehold — long-term lease</h3><p class="own__term">Term set by the lease, with extension</p><p class="own__text">The right to use the property under a lease agreement for decades. Suits both living and renting out.</p></li>
-      <li class="own__item"><span class="own__n num" aria-hidden="true">02</span><p class="own__tag">In your own name</p><h3 class="own__title">Hak Pakai — right to use</h3><p class="own__term">Up to 80 years (30 + 20 + 30)</p><p class="own__text">Registered to you personally if you hold an Indonesian residence permit (KITAS/KITAP). An option for your own residence.</p></li>
-      <li class="own__item"><span class="own__n num" aria-hidden="true">03</span><p class="own__tag">For rental and business</p><h3 class="own__title">PT PMA company — Hak Guna Bangunan</h3><p class="own__term">Up to 80 years (30 + 20 + 30)</p><p class="own__text">Purchase through an Indonesian company with foreign capital. For those planning to rent out or run a business.</p></li>
-      <li class="own__item"><span class="own__n num" aria-hidden="true">04</span><p class="own__tag">If your spouse is Indonesian</p><h3 class="own__title">Through your spouse</h3><p class="own__term">Perpetual ownership — full freehold (Hak Milik)</p><p class="own__text">The property is registered to your spouse, an Indonesian citizen. A marriage agreement on separate property is required.</p></li>
+      <li class="own__item"><span class="own__n num" aria-hidden="true">01</span><p class="own__tag">Most common</p><h3 class="own__title">Leasehold — long-term lease</h3><p class="own__term">Term set by the lease, with extension options</p><p class="own__text">The right to use the property under a lease agreement for decades. Works for both living in and renting out.</p></li>
+      <li class="own__item"><span class="own__n num" aria-hidden="true">02</span><p class="own__tag">In your own name</p><h3 class="own__title">Hak Pakai — right to use</h3><p class="own__term">Term up to 80 years (30 + 20 + 30)</p><p class="own__text">Registered to you personally if you hold an Indonesian residence permit (KITAS/KITAP). An option for your own residence.</p></li>
+      <li class="own__item"><span class="own__n num" aria-hidden="true">03</span><p class="own__tag">For rental and business</p><h3 class="own__title">PT PMA company — Hak Guna Bangunan</h3><p class="own__term">Term up to 80 years (30 + 20 + 30)</p><p class="own__text">Purchase through an Indonesian company with foreign capital. For those planning to rent out or run a business.</p></li>
+      <li class="own__item"><span class="own__n num" aria-hidden="true">04</span><p class="own__tag">If your spouse is Indonesian</p><h3 class="own__title">Through your spouse</h3><p class="own__term">Perpetual ownership (Hak Milik)</p><p class="own__text">Your Indonesian-citizen spouse becomes the owner; the foreign spouse acquires no rights to the property itself. A prenuptial agreement separating assets is required.</p></li>
     </ol>
     <div class="own__consult">
       <p class="own__consult-text">We&#x27;ll advise you in detail on your situation after your request.</p>
-      <a class="btn btn--primary" href="#podbor" data-cta="own"><span>Leave a request</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
+      <a class="btn btn--primary" href="#podbor" data-cta="own"><span>Start my search</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
     </div>
     <p class="own__note">We&#x27;ll choose the ownership structure that suits you together after a consultation — based on your plans, residence status and the property&#x27;s documents.</p>
     <p class="own__disc">General information. The final structure is chosen together with a notary based on the specific property&#x27;s documents.</p>
@@ -275,7 +275,7 @@
 </footer>
 
 <div class="sticky" id="sticky" hidden>
-  <a class="btn btn--primary btn--full" href="#podbor" data-cta="sticky"><span>Get my shortlist</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  <a class="btn btn--primary btn--full" href="#podbor" data-cta="sticky"><span>Start my search</span><svg viewBox="0 0 18 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.3"/></svg></a>
 </div>
 
 </body>
