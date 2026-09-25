@@ -100,7 +100,7 @@ ul, ol { list-style: none; }
 .btn--line { border: 1.5px solid var(--line); color: var(--ink); background: transparent; }
 .btn--line:hover { border-color: var(--ink); background: var(--stone); }
 .btn--full { width: 100%; }
-.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+.btn[disabled] { opacity: .62; cursor: not-allowed; transform: none; }
 .btn[aria-busy="true"] { opacity: .7; cursor: progress; }
 
 /* ---------- topbar ---------- */
@@ -121,19 +121,25 @@ ul, ol { list-style: none; }
 .topnav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); margin-left: auto; }
 .topnav a:not(.btn) {
   min-height: 44px; display: inline-flex; align-items: center;
-  font-size: 14.5px; font-weight: 450; color: var(--ink-soft); text-decoration: none;
-  transition: color var(--t) var(--ease);
+  font-size: 14.5px; font-weight: 500; color: var(--ink); text-decoration: none;
+  transition: color var(--t) var(--ease), opacity var(--t) var(--ease);
 }
-.topnav a:not(.btn):hover { color: var(--ink); }
+.topnav a:not(.btn):hover { color: var(--olive-deep); }
+.brand { color: var(--ink); font-weight: 500; }
+.topbar:not(.is-solid) .brand,
+.topbar:not(.is-solid) .topnav a:not(.btn),
+.topbar:not(.is-solid) .langs a {
+  text-shadow: 0 0 14px rgba(248, 246, 240, .95), 0 0 3px rgba(248, 246, 240, .85);
+}
 .langs { display: flex; align-items: center; gap: 2px; flex: none; }
 .langs a {
   min-height: 44px; display: inline-flex; align-items: center; padding: 0 7px;
-  font-size: 12.5px; font-weight: 500; letter-spacing: .08em;
-  color: var(--ink-soft); text-decoration: none; border-radius: 8px;
+  font-size: 12.5px; font-weight: 600; letter-spacing: .08em;
+  color: var(--ink-2); text-decoration: none; border-radius: 8px;
   transition: color var(--t) var(--ease);
 }
 .langs a:hover { color: var(--ink); }
-.langs a[aria-current="true"] { color: var(--olive); }
+.langs a[aria-current="true"] { color: var(--olive-deep); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1.5px; }
 
 /* ---------- hero: fullscreen photo + slow Ken Burns ---------- */
 .hero {
@@ -178,6 +184,11 @@ ul, ol { list-style: none; }
 .hero__cta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .hero__meta { font-size: 14px; color: var(--ink); font-weight: 500; }
 .hero .eyebrow { color: #4A5A34; font-weight: 600; }
+@media (min-width: 1025px) {
+  .hero__text { max-width: 680px; }
+  .hero__title { letter-spacing: .012em; word-spacing: .06em; line-height: 1.1; }
+  .hero__lead { letter-spacing: .012em; word-spacing: .04em; }
+}
 .hero__title, .hero__lead, .hero__meta, .hero .eyebrow {
   text-shadow: 0 0 22px rgba(248, 246, 240, .9), 0 0 3px rgba(248, 246, 240, .7);
 }
