@@ -668,6 +668,8 @@
       });
     }, { threshold: 0.25 });
     areasIo.observe(areasEl);
+    // Safety: never leave the row invisible (deep links, odd viewports, observer quirks).
+    setTimeout(function () { areasEl.classList.add('is-in'); }, 4000);
   } else if (areasEl) {
     areasEl.classList.add('is-in');
   }

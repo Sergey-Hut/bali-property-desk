@@ -186,9 +186,36 @@ ul, ol { list-style: none; }
 .hero .eyebrow { color: #4A5A34; font-weight: 600; }
 @media (min-width: 1025px) {
   .hero__text { max-width: 680px; }
-  .hero__title { letter-spacing: .012em; word-spacing: .06em; line-height: 1.1; }
-  .hero__lead { letter-spacing: .012em; word-spacing: .04em; }
+  .hero__title { letter-spacing: .012em; word-spacing: .06em; line-height: 1.1; margin: 36px 0 36px; }
+  .hero__lead { letter-spacing: .012em; word-spacing: .04em; margin-bottom: 46px; }
+  .hero__cta .btn { min-height: 62px; padding: 18px 38px; font-size: 16.5px; border-radius: 16px; }
+  .hero__cta .btn svg { width: 19px; height: 11px; }
+  .hero__meta { font-size: 15px; }
 }
+
+/* Soft fade from the hero photo into the next block. */
+.hero::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 24vh; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(251, 250, 247, 0) 0%, rgba(251, 250, 247, .55) 55%, rgba(251, 250, 247, .92) 85%, var(--paper) 100%);
+}
+.hero__inner { z-index: 2; }
+
+/* Same whitened edges as the hero, carried down the whole page, with a slow light drift. */
+.cats, .quiz-sec, .how, .own { position: relative; overflow: hidden; isolation: isolate; }
+.cats > .wrap, .quiz-sec > .wrap, .how > .wrap, .own > .wrap { position: relative; z-index: 1; }
+.cats::before, .quiz-sec::before, .how::before, .own::before {
+  content: ""; position: absolute; inset: -140px 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(34% 58% at 0% 34%, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 72%),
+    radial-gradient(34% 58% at 100% 66%, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 72%),
+    radial-gradient(26% 42% at 0% 82%, rgba(226, 219, 203, .5), rgba(226, 219, 203, 0) 72%),
+    radial-gradient(26% 42% at 100% 18%, rgba(226, 219, 203, .5), rgba(226, 219, 203, 0) 72%);
+}
+.rb-anim .cats::before, .rb-anim .quiz-sec::before, .rb-anim .how::before, .rb-anim .own::before {
+  animation: sideFlow 14s ease-in-out infinite alternate;
+}
+.rb-anim .quiz-sec::before, .rb-anim .own::before { animation-delay: -7s; }
+@keyframes sideFlow { from { transform: translateY(-6%); } to { transform: translateY(6%); } }
 .hero__title, .hero__lead, .hero__meta, .hero .eyebrow {
   text-shadow: 0 0 22px rgba(248, 246, 240, .9), 0 0 3px rgba(248, 246, 240, .7);
 }
