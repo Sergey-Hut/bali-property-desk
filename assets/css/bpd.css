@@ -423,6 +423,11 @@ ul, ol { list-style: none; }
 .qdone__title:focus { outline: none; }
 .qdone__body { color: var(--ink-soft); }
 .qdone__note { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft); font-size: 13.5px; color: var(--ink-soft); }
+.qdone__demo {
+  margin-top: 16px; padding: 12px 16px; border-radius: 10px;
+  background: var(--stone); border: 1px dashed var(--line);
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
+}
 .qdone__actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 .qdone__actions .btn { min-height: 50px; padding: 12px 22px; font-size: 14.5px; }
 .qdone__actions .ico-wa { width: 18px; height: 18px; }
@@ -596,7 +601,11 @@ ul, ol { list-style: none; }
   }
   .hero__lead { font-size: 16.5px; line-height: 1.75; margin-bottom: 48px; }
   .hero__cta { gap: 18px; }
-  .hero__cta .btn { width: 100%; }
+  .hero__cta .btn { width: 100%; background: #2E312C; }
+  .hero__text { margin-top: 20px; }
+  /* Touch feedback: the button reacts to the tap itself, since there is no hover on phones. */
+  .btn--primary:active { transform: scale(.985); background: #1A1C19; }
+  .m-rb .btn--primary::after { animation: sheenIdle 6.5s var(--ease) 2s infinite; }
   .hero__meta { width: 100%; text-align: center; }
   .cats { padding-top: 48px; }
   .cats__grid { gap: 10px; }

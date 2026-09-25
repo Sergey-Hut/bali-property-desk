@@ -536,6 +536,11 @@
     if (!S.leadId) { S.leadId = genLeadId(); persist(); }
     var payload = buildPayload(d);
     setBusy(true);
+    // Review build has no lead endpoint: show the real success screen, clearly marked as a demo.
+    if (C.demo_mode) {
+      setTimeout(function () { onSuccess(true); }, 700);
+      return;
+    }
     var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
     var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, C.relay_timeout_ms);
     fetch(C.relay_url, {
@@ -556,10 +561,12 @@
     });
   }
 
-  function onSuccess() {
+  function onSuccess(demo) {
     S.done = true;
     setBusy(false);
-    track('lead_created', { landing_version: C.landing_version, language: T.meta.lang });
+    var demoNote = $('success-demo');
+    if (demoNote) demoNote.hidden = !demo;
+    if (!demo) track('lead_created', { landing_version: C.landing_version, language: T.meta.lang });
     $('success-eyebrow').textContent = fmt(T.success.eyebrow, { id: S.leadId });
     var waLink = $('wa-link'), tgLink = $('tg-link');
     if (waLink) {
@@ -593,6 +600,11 @@
           encodeURIComponent(fmt(T.fail.wa_prefill, { id: S.leadId || '—', summary: parts.join(' · ') }));
       }
     }
+    var ft = $('fail-tg');
+    if (ft) {
+      ft.hidden = !C.telegram_username;
+      if (C.telegram_username) ft.href = 'https://t.me/' + C.telegram_username;
+    }
     showView(vFail);
     ensureQuizInView();
     focusNoScroll($('fail-title'));
@@ -617,6 +629,8 @@
   if (waBtn) waBtn.addEventListener('click', function () { track('whatsapp_click', { place: 'success' }); });
   if (tgBtn) tgBtn.addEventListener('click', function () { track('telegram_click', { place: 'success' }); });
   if (failWaBtn) failWaBtn.addEventListener('click', function () { track('whatsapp_click', { place: 'fail' }); });
+  var failTgBtn = $('fail-tg');
+  if (failTgBtn) failTgBtn.addEventListener('click', function () { track('telegram_click', { place: 'fail' }); });
 
   $('fail-retry').addEventListener('click', function () {
     showView(vContact);
