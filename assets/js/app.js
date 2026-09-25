@@ -426,6 +426,18 @@
     var code = fCountry.value;
     var digits = raw.replace(/\D/g, '');
     var whatsapp = null, iso = 'XX', phoneErr = '';
+    // A number typed/pasted with a leading "+" is a complete international number:
+    // trust it over the country picker, and move the picker to match.
+    if (raw.charAt(0) === '+' && code !== 'other') {
+      var opts = Array.prototype.slice.call(fCountry.options);
+      var match = null;
+      opts.forEach(function (o) {
+        var c = o.value.replace('+', '');
+        if (o.value !== 'other' && digits.indexOf(c) === 0 && (!match || c.length > match.value.replace('+', '').length)) match = o;
+      });
+      if (match && match.value !== code) { fCountry.value = match.value; code = match.value; syncPhonePlaceholder(); }
+      else if (!match) { fCountry.value = 'other'; code = 'other'; syncPhonePlaceholder(); }
+    }
     if (!raw) phoneErr = T.contact.err_phone_required;
     else if (code === 'other') {
       if (raw.charAt(0) !== '+' || digits.length < 8 || digits.length > 15) phoneErr = T.contact.err_phone_other;
@@ -475,6 +487,10 @@
     } };
   }
 
+  /* The relay contract keeps goal/area/priority as arrays regardless of how the
+     question is asked, so a single-select answer ships as a one-item list. */
+  function asList(v) { return v == null ? [] : (Array.isArray(v) ? v : [v]); }
+
   function buildPayload(d) {
     var ft = firstTouch();
     var p = {
@@ -489,10 +505,10 @@
       tg_username: d.tg_username,
       country: d.country,
       email: d.email,
-      goal: S.answers.goal || [],
+      goal: asList(S.answers.goal),
       budget: S.answers.budget || null,
-      area: S.answers.area || [],
-      priority: S.answers.priority || [],
+      area: asList(S.answers.area),
+      priority: asList(S.answers.priority),
       timeline: S.answers.timeline || null,
       referrer: ft.referrer || null,
       landing_url: ft.landing_url || null,
@@ -684,7 +700,10 @@
     var pastHero = heroCta ? heroCta.getBoundingClientRect().bottom < 0 : window.pageYOffset > 400;
     var quizTop = quizSec.getBoundingClientRect().top;
     var quizBottom = quizSec.getBoundingClientRect().bottom;
-    var on = pastHero && (quizTop > window.innerHeight * 0.85 || quizBottom < window.innerHeight * 0.3) && !S.done;
+    // Hide once the footer is on screen, so the bar never covers its links.
+    var footerEl = document.querySelector('.footer');
+    var footerUp = footerEl && footerEl.getBoundingClientRect().top < window.innerHeight - 40;
+    var on = pastHero && !footerUp && (quizTop > window.innerHeight * 0.85 || quizBottom < window.innerHeight * 0.3) && !S.done;
     sticky.hidden = !on;
     sticky.classList.toggle('is-on', on);
     document.body.classList.toggle('has-sticky', on);
