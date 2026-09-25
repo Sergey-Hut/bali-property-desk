@@ -587,14 +587,14 @@ ul, ol { list-style: none; }
   body { font-size: 16px; }
   :root { --top-h: 62px; --sec-y: clamp(64px, 12vw, 88px); }
   .brand { font-size: 12.5px; letter-spacing: .18em; }
-  .hero__title { font-size: clamp(34px, 9.6vw, 42px); line-height: 1.17; letter-spacing: .005em; margin: 26px 0 30px; }
+  .hero__title { font-size: clamp(34px, 9.6vw, 42px); line-height: 1.17; letter-spacing: .005em; margin: 44px 0 44px; }
   .hero__title span + span { margin-top: .14em; }
   .hero .eyebrow { letter-spacing: .22em; }
-  .hero__bg img { object-position: 50% 50%; }
+  .hero__bg img { object-position: 64% 50%; }
   .hero__scrim, .hero--b .hero__scrim {
     background: linear-gradient(90deg, rgba(248, 246, 240, .88) 0%, rgba(248, 246, 240, .55) 45%, rgba(248, 246, 240, .08) 85%);
   }
-  .hero__lead { font-size: 16.5px; line-height: 1.75; margin-bottom: 34px; }
+  .hero__lead { font-size: 16.5px; line-height: 1.75; margin-bottom: 48px; }
   .hero__cta { gap: 18px; }
   .hero__cta .btn { width: 100%; }
   .hero__meta { width: 100%; text-align: center; }
