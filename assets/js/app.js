@@ -139,7 +139,7 @@
   var quiz = $('quiz'), vStep = $('qstep'), vContact = $('qcontact'), vSuccess = $('qsuccess'), vFail = $('qfail');
   var qBody = $('q-body'), qProgress = $('q-progress'), qFill = $('q-fill'), qBack = $('q-back'), qNext = $('q-next');
   var form = $('lead-form'), fName = $('f-name'), fCountry = $('f-country'), fPhone = $('f-phone'),
-      fEmail = $('f-email'), fConsent = $('f-consent'), fCompany = $('f-company'),
+      fEmail = $('f-email'), fConsent = $('f-consent'), fCompany = $('f-hp'),
       fTg = $('f-tg'), tgField = $('tg-field'), lblPhone = $('lbl-phone');
   var submitBtn = $('submit'), submitLabel = $('submit-label'), formAlert = $('form-alert');
   var sticky = $('sticky'), topbar = $('topbar'), quizSec = $('podbor');
@@ -541,6 +541,13 @@
       setTimeout(function () { onSuccess(true); }, 700);
       return;
     }
+    post(payload, false);
+  }
+
+  /* The relay confirms a stored lead by echoing its lead_id. A bare {"ok":true} is what it
+     answers to a filled decoy field (it drops that lead on purpose), so it is never a success.
+     A person can only fill the decoy through browser autofill: clear it and send once more. */
+  function post(payload, retried) {
     var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
     var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, C.relay_timeout_ms);
     fetch(C.relay_url, {
@@ -553,8 +560,13 @@
       return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; });
     }).then(function (res) {
       clearTimeout(to);
-      if (res.ok && res.j && res.j.ok === true) onSuccess();
-      else onFail('http_' + res.status);
+      var j = res.j || {};
+      if (res.ok && j.ok === true && j.lead_id === payload.lead_id) onSuccess();
+      else if (res.ok && j.ok === true && !retried && payload.company) {
+        fCompany.value = '';
+        payload.company = '';
+        post(payload, true);
+      } else onFail('http_' + res.status);
     }).catch(function (err) {
       clearTimeout(to);
       onFail(err && err.name === 'AbortError' ? 'timeout' : 'network');
