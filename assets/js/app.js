@@ -455,7 +455,7 @@
       var opt = fCountry.options[fCountry.selectedIndex];
       var lo = opt && +opt.getAttribute('data-min') || 6;
       var hi = opt && +opt.getAttribute('data-max') || 14;
-      if (digits.length < lo || digits.length > hi || cc.length + digits.length > 15) phoneErr = T.contact.err_phone_invalid;
+      if (digits.length < lo || digits.length > hi || cc.length + digits.length > 15) phoneErr = lo === hi ? fmt(T.contact.err_phone_exact, { n: lo }) : fmt(T.contact.err_phone_invalid, { min: lo, max: hi });
       else {
         whatsapp = '+' + cc + digits;
         iso = opt ? opt.getAttribute('data-iso') || 'XX' : 'XX';
