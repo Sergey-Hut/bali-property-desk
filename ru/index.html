@@ -19,10 +19,10 @@
 <link rel="preload" href="/assets/fonts/inter-tight-normal-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" media="(max-width: 640px)" imagesrcset="/assets/img/hero-own-m-800.avif 800w, /assets/img/hero-own-m-1000.avif 1000w, /assets/img/hero-own-m-1200.avif 1200w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" type="image/avif" media="(min-width: 641px)" imagesrcset="/assets/img/hero-own-1000.avif 1000w, /assets/img/hero-own-1600.avif 1600w, /assets/img/hero-own-2400.avif 2400w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="/assets/css/bpd.css?v=9c8dfdcd">
-<script src="/assets/js/bpd-data.ru.js?v=9c8dfdcd" defer></script>
-<script src="/assets/js/app.js?v=9c8dfdcd" defer></script>
-<meta name="robots" content="noindex, nofollow"><script src="/assets/js/analytics.js?v=9c8dfdcd" defer></script>
+<link rel="stylesheet" href="/assets/css/bpd.css?v=bab9b30e">
+<script src="/assets/js/bpd-data.ru.js?v=bab9b30e" defer></script>
+<script src="/assets/js/app.js?v=bab9b30e" defer></script>
+<meta name="robots" content="noindex, nofollow"><script src="/assets/js/analytics.js?v=bab9b30e" defer></script>
 </head>
 <body>
 <a class="skip" href="#podbor">Перейти к анкете</a>
@@ -131,7 +131,7 @@
 
           <div class="field">
             <label for="f-name">Имя <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-required="true" aria-describedby="e-name">
+            <input id="f-name" class="ym-disable-keys" name="name" type="text" autocomplete="name" maxlength="80" required aria-required="true" aria-describedby="e-name">
             <p class="field__err" id="e-name"></p>
           </div>
 
@@ -161,20 +161,20 @@
                   <option value="+33" data-iso="FR" data-min="9" data-max="9">+33 FR</option>
                   <option value="other" data-iso="XX">Другая</option>
               </select>
-              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-required="true" aria-describedby="e-phone" placeholder="Номер">
+              <input id="f-phone" class="ym-disable-keys" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" required aria-required="true" aria-describedby="e-phone" placeholder="Номер">
             </div>
             <p class="field__err" id="e-phone"></p>
           </div>
 
           <div class="field" id="tg-field" hidden>
             <label for="f-tg">Ник в Telegram <span class="opt-lbl">(необязательно)</span></label>
-            <input id="f-tg" name="tg_username" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="33" aria-describedby="e-tg" placeholder="@username">
+            <input id="f-tg" class="ym-disable-keys" name="tg_username" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="33" aria-describedby="e-tg" placeholder="@username">
             <p class="field__err" id="e-tg"></p>
           </div>
 
           <div class="field">
             <label for="f-email">Email <span class="opt-lbl">(необязательно)</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" maxlength="120" aria-describedby="e-email">
+            <input id="f-email" class="ym-disable-keys" name="email" type="email" autocomplete="email" maxlength="120" aria-describedby="e-email">
             <p class="field__err" id="e-email"></p>
           </div>
 
