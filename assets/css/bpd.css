@@ -670,9 +670,14 @@ ul, ol { list-style: none; }
   .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 80px; }
   .cats { padding-top: 150px; }
   .hero__bg img { object-position: 62% 30%; }
-  /* The villa stays visible: the top half is clear, white only builds up under the text block. */
+  /* The villa stays visible all the way down: only a light veil under the text block. */
   .hero__scrim, .hero--b .hero__scrim {
-    background: linear-gradient(180deg, rgba(248, 246, 240, 0) 0%, rgba(248, 246, 240, 0) 38%, rgba(248, 246, 240, .4) 52%, rgba(248, 246, 240, .8) 66%, rgba(248, 246, 240, .94) 78%, rgba(248, 246, 240, .96) 100%);
+    background: linear-gradient(180deg, rgba(248, 246, 240, 0) 0%, rgba(248, 246, 240, 0) 42%, rgba(248, 246, 240, .2) 56%, rgba(248, 246, 240, .42) 70%, rgba(248, 246, 240, .52) 84%, rgba(248, 246, 240, .55) 100%);
+  }
+  /* The bottom fade into the next section is kept thin so it doesn't whiten the photo. */
+  .hero::after {
+    height: 10vh;
+    background: linear-gradient(180deg, rgba(251, 250, 247, 0) 0%, rgba(251, 250, 247, .4) 70%, var(--paper) 100%);
   }
   .hero__text { margin-top: 0; }
   /* A light halo keeps the heading readable where the photo shows through. */
