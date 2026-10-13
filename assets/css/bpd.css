@@ -667,14 +667,15 @@ ul, ol { list-style: none; }
    so the whole offer reads at a glance and the next section stays below the fold. */
 @media (max-width: 640px) {
   /* Bottom padding lifts the offer clear of the browser toolbar; the gap below the hero keeps the next block off the first screen. */
-  .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 124px; }
+  .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 111px; }
   .cats { padding-top: 150px; }
   .hero__bg img { object-position: 62% 30%; }
   .hero__scrim, .hero--b .hero__scrim {
     background: linear-gradient(180deg, rgba(248, 246, 240, 0) 0%, rgba(248, 246, 240, .1) 24%, rgba(248, 246, 240, .82) 44%, rgba(248, 246, 240, .97) 60%, rgba(248, 246, 240, .98) 100%);
   }
   .hero__text { margin-top: 0; }
-  .hero__title { font-size: clamp(34px, 9.6vw, 40px); line-height: 1.12; margin: 12px 0 14px; }
+  /* Top margin lifts the eyebrow "Property in Bali" without moving the heading, lead or button. */
+  .hero__title { font-size: clamp(34px, 9.6vw, 40px); line-height: 1.12; margin: 57px 0 14px; }
   .hero__accent { color: #3E4D2B; }
   /* +55px (about 1 cm on an iPhone screen): the button sits lower under the lead, and the block above moves up by the same amount. */
   .hero__lead { font-size: 16.5px; line-height: 1.6; margin-bottom: 77px; color: #1A1C19; }
