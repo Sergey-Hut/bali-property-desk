@@ -666,7 +666,9 @@ ul, ol { list-style: none; }
 /* Phone first screen: the photo sits on top, the offer is anchored to the bottom on a light panel,
    so the whole offer reads at a glance and the next section stays below the fold. */
 @media (max-width: 640px) {
-  .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 28px; }
+  /* Bottom padding lifts the offer clear of the browser toolbar; the gap below the hero keeps the next block off the first screen. */
+  .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 124px; }
+  .cats { padding-top: 150px; }
   .hero__bg img { object-position: 62% 30%; }
   .hero__scrim, .hero--b .hero__scrim {
     background: linear-gradient(180deg, rgba(248, 246, 240, 0) 0%, rgba(248, 246, 240, .1) 24%, rgba(248, 246, 240, .82) 44%, rgba(248, 246, 240, .97) 60%, rgba(248, 246, 240, .98) 100%);
