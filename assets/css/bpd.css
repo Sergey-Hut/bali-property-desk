@@ -663,6 +663,22 @@ ul, ol { list-style: none; }
   .footer { text-align: left; }
 }
 
+/* Phone first screen: the photo sits on top, the offer is anchored to the bottom on a light panel,
+   so the whole offer reads at a glance and the next section stays below the fold. */
+@media (max-width: 640px) {
+  .hero { min-height: 100vh; min-height: 100svh; align-items: flex-end; padding: calc(var(--top-h) + 16px) 0 28px; }
+  .hero__bg img { object-position: 62% 30%; }
+  .hero__scrim, .hero--b .hero__scrim {
+    background: linear-gradient(180deg, rgba(248, 246, 240, 0) 0%, rgba(248, 246, 240, .1) 24%, rgba(248, 246, 240, .82) 44%, rgba(248, 246, 240, .97) 60%, rgba(248, 246, 240, .98) 100%);
+  }
+  .hero__text { margin-top: 0; }
+  .hero__title { font-size: clamp(34px, 9.6vw, 40px); line-height: 1.12; margin: 12px 0 14px; }
+  .hero__accent { color: #3E4D2B; }
+  .hero__lead { font-size: 16.5px; line-height: 1.6; margin-bottom: 22px; color: #1A1C19; }
+  .hero__cta { gap: 12px; }
+  .hero__meta { margin-top: 0; }
+}
+
 /* Short landscape screens (a phone turned sideways): tighter quiz card, three options per row,
    so the question and options fit with the sticky "Continue" row. */
 @media (max-height: 500px) and (orientation: landscape) {
