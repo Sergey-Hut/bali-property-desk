@@ -84,10 +84,34 @@
   var VALID = {};
   Q.forEach(function (q) { VALID[q.key] = q.options.map(function (o) { return o.v; }); });
 
+  /* "No preference" options are exclusive: picking one clears the others, picking any other option clears it.
+     Keyed by question key; only these two multi-questions have such an option. */
+  var EXCLUSIVE = { area: 'area_open', priority: 'priority_open' };
+  function exclusiveOf(q) { return EXCLUSIVE[q.key] || null; }
+
+  /* One rule for multi-select (used by the click handler): returns the next selection for toggling v,
+     or null when the max limit blocks it. */
+  function toggleMulti(q, cur, v) {
+    var ex = exclusiveOf(q);
+    var sel = (cur || []).slice();
+    var at = sel.indexOf(v);
+    if (at !== -1) { sel.splice(at, 1); return sel; }
+    if (ex && v === ex) return [v];
+    if (ex) sel = sel.filter(function (x) { return x !== ex; });
+    if (q.max && sel.length >= q.max) return null;
+    sel.push(v);
+    return sel;
+  }
+
   function sanitizeAnswer(q, v) {
     if (isMulti(q)) {
       if (!Array.isArray(v)) return null;
       var arr = v.filter(function (x) { return VALID[q.key].indexOf(x) !== -1; });
+      var ex = exclusiveOf(q);
+      if (ex && arr.length > 1 && arr.indexOf(ex) !== -1) {
+        // Saved data may hold an open answer next to a specific one: the latest pick wins (array keeps pick order).
+        arr = arr[arr.length - 1] === ex ? [ex] : arr.filter(function (x) { return x !== ex; });
+      }
       if (q.max) arr = arr.slice(0, q.max);
       return arr.length ? arr : null;
     }
@@ -319,17 +343,16 @@
     var q = Q[i];
     markStarted('answer');
     if (isMulti(q)) {
-      var sel = (S.answers[q.key] || []).slice();
-      var at = sel.indexOf(v);
-      if (at !== -1) sel.splice(at, 1);
-      else {
-        if (q.max && sel.length >= q.max) return;
-        sel.push(v);
-        spawnSpark(btn);
-      }
+      var before = S.answers[q.key] || [];
+      var sel = toggleMulti(q, before, v);
+      if (!sel) return;
+      if (sel.indexOf(v) !== -1 && before.indexOf(v) === -1) spawnSpark(btn);
       if (sel.length) S.answers[q.key] = sel; else delete S.answers[q.key];
       persist();
-      btn.setAttribute('aria-pressed', at === -1 ? 'true' : 'false');
+      // An exclusive pick can clear other buttons too, so refresh the whole group.
+      Array.prototype.forEach.call(qBody.querySelectorAll('.opt'), function (b) {
+        b.setAttribute('aria-pressed', sel.indexOf(b.getAttribute('data-v')) !== -1 ? 'true' : 'false');
+      });
       updateMaxState(q);
       var wasOff = qNext.disabled;
       qNext.disabled = !answered(q);
@@ -587,6 +610,9 @@
     if (demoNote) demoNote.hidden = !demo;
     if (!demo) track('lead_created', { landing_version: C.landing_version, language: T.meta.lang });
     $('success-eyebrow').textContent = fmt(T.success.eyebrow, { id: S.leadId });
+    // {sla} comes from window.BPD.config.sla, which build.py sets per language (site.config.json "sla").
+    var successBody = document.querySelector('#qsuccess .qdone__body');
+    if (successBody) successBody.textContent = fmt(T.success.body, { sla: C.sla });
     var waLink = $('wa-link'), tgLink = $('tg-link');
     if (waLink) {
       waLink.hidden = !C.whatsapp_number;

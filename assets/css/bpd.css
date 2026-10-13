@@ -659,8 +659,23 @@ ul, ol { list-style: none; }
   .brand { letter-spacing: .13em; }
   .topnav { display: none; }
   .langs { gap: 0; margin-left: auto; }
-  .langs a { padding: 0 6px; font-size: 12px; letter-spacing: .06em; }
+  .langs a { padding: 0 6px; min-width: 44px; justify-content: center; font-size: 12px; letter-spacing: .06em; }
   .footer { text-align: left; }
+}
+
+/* Short landscape screens (a phone turned sideways): tighter quiz card, three options per row,
+   so the question and options fit with the sticky "Continue" row. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .quiz-sec { padding: 20px 0 32px; }
+  .quiz-card { padding: 14px 20px 12px; border-radius: 18px; }
+  .progress { margin-bottom: 12px; }
+  .q__title { font-size: 22px; }
+  .q__sub { margin-top: 4px; font-size: 14px; }
+  .q__count { margin-top: 4px; }
+  .opts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
+  .opt { min-height: 44px; padding: 9px 12px; gap: 10px; font-size: 14px; }
+  .opt__mark { width: 18px; height: 18px; }
+  .quiz-card[data-state="qstep"] .qnav { margin-top: 8px; padding: 8px 0 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
