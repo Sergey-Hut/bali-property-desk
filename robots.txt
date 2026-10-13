@@ -1,3 +1,10 @@
-# Review copy — not for indexing
+# Bali Property Desk
 User-agent: *
-Disallow: /
+Allow: /
+
+# OpenAI crawlers explicitly allowed (ads review + search)
+User-agent: OAI-AdsBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
